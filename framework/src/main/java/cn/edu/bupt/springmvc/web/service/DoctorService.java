@@ -16,4 +16,8 @@ public interface DoctorService {
 	int updateByPrimaryKeySelective(@Param("record") Doctor record);
 	
 	int deleteByExample();
+	
+	public Doctor getDoctorDetailInfo(String doctorId) throws Exception;
+	
+	public List<Doctor> getDoctorReleaseNumByOutPatientId(String outpatientId) throws Exception;
 }

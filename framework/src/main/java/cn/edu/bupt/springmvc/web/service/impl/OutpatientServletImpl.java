@@ -72,5 +72,11 @@ public class OutpatientServletImpl implements OutpatientService {
 		int i = outpatientMapper.deleteByExample(outpatientExample);
 		return i;
 	}
+	
+	@Override
+	public Outpatient getOutpatientDetailsById(String outpatientId) throws Exception {
+		// TODO Auto-generated method stub
+		return outpatientMapper.selectByPrimaryKey(outpatientId);
+	}
 
 }

@@ -71,6 +71,21 @@
   <sql id="Base_Column_List" >
     sectionId, hosId, sectionCode, sectionName, sectionIntro, sectionPic, sectionLoc
   </sql>
+  <!-- 根据科室的Id得到本科室下所有的医生 -->
+  <select id = "selectSectionDoctorsBySectionId" parameterType="String" 
+  resultMap="cn.edu.bupt.springmvc.web.dao.DoctorMapper.DoctorBaseResultMap">
+		SELECT doctor.*
+	FROM
+	section,
+	doctor,
+	outpatient
+	WHERE
+	doctor.outpatientId = outpatient.outpatientId
+	AND
+	outpatient.sectionId = section.sectionId
+	AND
+	section.sectionId = #{value}
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.SectionExample" >
     select
     <if test="distinct" >

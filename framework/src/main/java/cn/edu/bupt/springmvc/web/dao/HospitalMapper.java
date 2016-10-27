@@ -27,4 +27,6 @@ public interface HospitalMapper {
     int updateByPrimaryKeySelective(Hospital record);
 
     int updateByPrimaryKey(Hospital record);
+	
+	List<Hospital> finHospitalSectionResultMap(String hospitalId);
 }

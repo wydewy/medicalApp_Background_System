@@ -18,4 +18,6 @@ public interface CustomerService {
 	int updateByPrimaryKeySelective(@Param("record") Customer record);
 	
 	int deleteByExample();
+	
+	public Customer getCustoemrDetailsByIdCard(String idCard) throws Exception;
 }

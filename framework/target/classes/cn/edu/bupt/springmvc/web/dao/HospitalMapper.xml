@@ -14,6 +14,18 @@
     <result column="hosTraffic" property="hostraffic" jdbcType="VARCHAR" />
     <result column="hosSpecial" property="hosspecial" jdbcType="VARCHAR" />
     <result column="hosEstablished" property="hosestablished" jdbcType="DATE" />
+	<!-- collection:对关联查询到的多条记录映射到集合对象中 
+    property：将关联查询到多条记录映射到section的那个属性中
+    ofType:指定映射到集合中的pojo的类型-->
+    <collection property="sectionList" ofType="cn.edu.bupt.springmvc.web.model.Section" >
+        <id column="sectionId" jdbcType="CHAR" property="sectionid" />
+<!--         <result column="hosId" jdbcType="CHAR" property="hosid" /> -->
+        <result column="sectionCode" jdbcType="VARCHAR" property="sectioncode" />
+        <result column="sectionName" jdbcType="VARCHAR" property="sectionname" />
+        <result column="sectionIntro" jdbcType="VARCHAR" property="sectionintro" />
+        <result column="sectionPic" jdbcType="VARCHAR" property="sectionpic" />
+        <result column="sectionLoc" jdbcType="VARCHAR" property="sectionloc" />
+    </collection>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,6 +89,16 @@
     hosId, hosName, hosGrade, hosAddr, hosTel, hosIntro, hosUrl, dean, deanIntro, hosTraffic, 
     hosSpecial, hosEstablished
   </sql>
+  <select id="finHospitalSectionResultMap" parameterType="String" resultMap="HospitalBaseResultMap">
+	SELECT
+	hospital.*,
+	section.sectionId,
+	section.sectionName
+	FROM
+	hospital,
+	section
+	WHERE hospital.hosId =#{value} and hospital.hosId = section.hosId;
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.HospitalExample" >
     select
     <if test="distinct" >

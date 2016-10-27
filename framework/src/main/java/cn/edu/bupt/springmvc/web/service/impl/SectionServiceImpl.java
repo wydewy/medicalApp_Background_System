@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 
 import cn.edu.bupt.springmvc.web.dao.SectionMapper;
+import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.Section;
 import cn.edu.bupt.springmvc.web.model.SectionExample;
 import cn.edu.bupt.springmvc.web.service.SectionService;
@@ -71,5 +72,13 @@ public class SectionServiceImpl implements SectionService {
 		int i = sectionMapper.deleteByExample(sectionExample);
 		return i;
 	}
+	
+		@Override
+	public List<Doctor> getSectionDoctorList(String sectionId) throws Exception {
+		// TODO Auto-generated method stub
+		 return sectionMapper.selectSectionDoctorsBySectionId(sectionId);
+	
+	}
+
 
 }

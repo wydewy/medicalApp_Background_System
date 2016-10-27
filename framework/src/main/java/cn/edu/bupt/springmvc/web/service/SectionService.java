@@ -3,6 +3,8 @@ package cn.edu.bupt.springmvc.web.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
+import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.Section;
 
 public interface SectionService {
@@ -16,4 +18,6 @@ public interface SectionService {
 	int updateByPrimaryKeySelective(@Param("record") Section record);
 		
 	int deleteByExample();
+	
+	public List<Doctor> getSectionDoctorList(String sectionId)throws Exception;
 }
