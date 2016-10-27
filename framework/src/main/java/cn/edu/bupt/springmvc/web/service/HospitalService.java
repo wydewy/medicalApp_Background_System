@@ -17,4 +17,6 @@ public interface HospitalService {
 	int updateByPrimaryKeySelective(@Param("record") Hospital record);
 	
 	int deleteByExample();
+	
+	public List<Hospital> getHospitalSectionList(String hospitalId)throws Exception;
 }

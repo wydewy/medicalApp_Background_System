@@ -95,5 +95,16 @@ public class DoctorServiceImpl implements DoctorService {
 		int i = doctorMapper.deleteByExample(doctorExample);
 		return i;
 	}
+	
+	public Doctor getDoctorDetailInfo(String doctorId) throws Exception {
+		// TODO Auto-generated method stub
+		return doctorMapper.selectByPrimaryKey(doctorId);
+	}
+	
+	
+	public List<Doctor> getDoctorReleaseNumByOutPatientId(String outpatientId) throws Exception {
+		// TODO Auto-generated method stub
+		return doctorMapper.selectDoctorReleaseNumInfoByOutPatientId(outpatientId);
+	}
 
 }

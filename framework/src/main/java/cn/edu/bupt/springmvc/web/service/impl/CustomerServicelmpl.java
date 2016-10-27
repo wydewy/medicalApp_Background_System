@@ -92,5 +92,18 @@ public class CustomerServicelmpl implements CustomerService {
 		int i = customerMapper.deleteByExample(customerExample);
 		return i;
 	}
+	
+		@Override
+	public Customer getCustoemrDetailsByIdCard(String idCard) throws Exception {
+
+		customerExample.createCriteria().andIdcardEqualTo(idCard);
+		List<Customer> customerList = customerMapper.selectByExample(customerExample);
+		Customer customer = new Customer();
+		if(customerList!=null){
+			customer = customerList.get(0);
+		}
+		return customer;
+	}
+
 
 }
