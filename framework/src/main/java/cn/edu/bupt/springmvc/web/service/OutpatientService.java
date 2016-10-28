@@ -18,4 +18,6 @@ public interface OutpatientService {
 	int updateByPrimaryKeySelective(@Param("record") Outpatient record);
 	
 	int deleteByExample();
+	
+	public Outpatient getOutpatientDetailsById(String outpatientId) throws Exception;
 }

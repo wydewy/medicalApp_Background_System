@@ -81,5 +81,12 @@ public class HospitalServiceImpl implements HospitalService {
 		int i = hospitalMapper.deleteByExample(hospitalExample);
 		return i;
 	}
+	
+		@Override
+	public List<Hospital> getHospitalSectionList(String hospitalId) throws Exception {
+		// TODO Auto-generated method stub
+		return hospitalMapper.finHospitalSectionResultMap(hospitalId);
+	}
+
 
 }

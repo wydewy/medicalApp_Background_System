@@ -1,6 +1,7 @@
 package cn.edu.bupt.springmvc.web.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Hospital {
     private String hosid;
@@ -27,6 +28,16 @@ public class Hospital {
 
     private Date hosestablished;
 
+	private List<Section> sectionList;
+
+	public List<Section> getSectionList() {
+		return sectionList;
+	}
+
+	public void setSectionList(List<Section> sectionList) {
+		this.sectionList = sectionList;
+	}
+	
     public String getHosid() {
         return hosid;
     }

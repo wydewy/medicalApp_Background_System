@@ -27,4 +27,6 @@ public interface DoctorMapper {
     int updateByPrimaryKeySelective(Doctor record);
 
     int updateByPrimaryKey(Doctor record);
+	
+	List<Doctor> selectDoctorReleaseNumInfoByOutPatientId(String outpatientId);
 }

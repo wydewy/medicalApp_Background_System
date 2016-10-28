@@ -1,5 +1,7 @@
 package cn.edu.bupt.springmvc.web.model;
 
+import java.util.List;
+
 public class Doctor {
     private String doctorid;
 
@@ -38,6 +40,16 @@ public class Doctor {
     private String telephone;
 
     private Byte relnubcount;
+
+	 private List<Releasenum> releaseNumList;
+
+    public List<Releasenum> getReleaseNumList() {
+		return releaseNumList;
+	}
+
+	public void setReleaseNumList(List<Releasenum> releaseNumList) {
+		this.releaseNumList = releaseNumList;
+	}
 
     public String getDoctorid() {
         return doctorid;

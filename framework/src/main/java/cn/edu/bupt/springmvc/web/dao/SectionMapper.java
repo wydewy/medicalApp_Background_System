@@ -1,5 +1,6 @@
 package cn.edu.bupt.springmvc.web.dao;
 
+import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.Section;
 import cn.edu.bupt.springmvc.web.model.SectionExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface SectionMapper {
     int updateByPrimaryKeySelective(Section record);
 
     int updateByPrimaryKey(Section record);
+	
+	List<Doctor> selectSectionDoctorsBySectionId(String sectionId);
 }
