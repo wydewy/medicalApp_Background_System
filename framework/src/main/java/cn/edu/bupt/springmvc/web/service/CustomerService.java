@@ -20,4 +20,6 @@ public interface CustomerService {
 	int deleteByExample();
 	
 	public Customer getCustoemrDetailsByIdCard(String idCard) throws Exception;
+	
+	public Customer loginVerifyByUserName(String userName) throws Exception;
 }
