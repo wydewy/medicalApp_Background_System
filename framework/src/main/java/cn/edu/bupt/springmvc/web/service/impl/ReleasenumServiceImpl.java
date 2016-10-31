@@ -71,4 +71,12 @@ public class ReleasenumServiceImpl implements ReleasenumService {
 		return i;
 	}
 
+	@Override
+	public Releasenum getReleasenumDetailsById(String releasenumId) throws Exception {
+		// TODO Auto-generated method stub
+		releasenumExample = new ReleasenumExample();
+		releasenumExample.createCriteria().andRealseidEqualTo(releasenumId);
+		return releasenumMapper.selectByExample(releasenumExample).get(0);
+	}
+
 }

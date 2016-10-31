@@ -16,10 +16,12 @@ import cn.edu.bupt.springmvc.web.model.Appointment;
 import cn.edu.bupt.springmvc.web.model.Customer;
 import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.Outpatient;
+import cn.edu.bupt.springmvc.web.model.Releasenum;
 import cn.edu.bupt.springmvc.web.service.AppointmentService;
 import cn.edu.bupt.springmvc.web.service.CustomerService;
 import cn.edu.bupt.springmvc.web.service.DoctorService;
 import cn.edu.bupt.springmvc.web.service.OutpatientService;
+import cn.edu.bupt.springmvc.web.service.ReleasenumService;
 
 @Controller
 @RequestMapping(value="appointment")
@@ -33,6 +35,8 @@ public class AppointmentController extends GenericController {
 	private CustomerService  customerService;
 	@Resource
 	private OutpatientService outpatientService;
+	@Resource
+	private ReleasenumService releasenumService;
 	
 	@RequestMapping(value="insert")
 	public void insert(HttpServletRequest request, HttpServletResponse response){
@@ -85,25 +89,56 @@ public class AppointmentController extends GenericController {
 	@RequestMapping(value="getAppointmentDetails", method = RequestMethod.GET)
 	public void getAppointmentDetails(HttpServletRequest request, HttpServletResponse response){
 	
-		String idCard = request.getParameter("idCard");
+		String id = request.getParameter("id");
 		String doctorId = request.getParameter("doctorId");
+		String releaseNumId = request.getParameter("releaseNumId");
 		Appointment appointment = new Appointment();
 		
 		try {
 			
-			Customer customer = customerService.getCustoemrDetailsByIdCard(idCard);
+			Customer customer = customerService.getCustoemrDetailsByIdCard(id);
 			Doctor doctor= doctorService.getDoctorDetailInfo(doctorId);
 			Outpatient outpatient = outpatientService.getOutpatientDetailsById(doctor.getOutpatientid());
+			Releasenum releasenum = releasenumService.getReleasenumDetailsById(releaseNumId);
+			if(customer!=null && doctor!=null && outpatient!=null && releasenum!=null){
 			String uuid = UUID.randomUUID().toString();
-			appointment.setId(uuid);
+			appointment.setId(uuid);	
 			appointment.setDoctorid(doctorId);
 			appointment.setCustomerid(customer.getCustomerid());
+			appointment.setAppointdate(releasenum.getDate());
+			appointment.setCustomername(customer.getCustomername());
+			appointment.setIdcard(customer.getIdcard());
+			appointment.setTelephone(outpatient.getTelephone());
+			appointment.setSectionarea(outpatient.getOutpatientloc());
+			appointment.setSectionname(outpatient.getSectionname());
+			appointment.setCost(5.0);
+			renderSuccessString(response, appointment);
+			}else{
+			renderErrorString(response, "Error to obtain appointmentInfo!");
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			renderErrorString(response, "Error to obtain appointmentInfo!");
 		}
 		
 	}
+	
+	/**
+	 * 保存预约信息
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="insert")
+	public void saveAppointmentDetails(HttpServletRequest request, HttpServletResponse response){
+		Appointment record = (Appointment)request.getAttribute("appointment");
+		int i = appointmentService.insert(record);
+		if (i>0) {
+			renderSuccessString(response, record);
+		} else {
+			renderErrorString(response, "insert appointment failed!");
+		}
+	}
+
 }
 

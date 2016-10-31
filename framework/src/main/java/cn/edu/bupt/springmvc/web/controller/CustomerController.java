@@ -62,5 +62,27 @@ public class CustomerController extends GenericController {
 			renderErrorString(response, "delete customer record failed!");
 		}
 	}
+	
+	/**
+	 * 用户登录验证
+	 */
+	@RequestMapping(value="loginVerifyByUserName")
+	public void loginVerify(HttpServletRequest request, HttpServletResponse response){
+		String userName = request.getParameter("account");
+		Customer custoemr = new Customer();
+		try {
+			custoemr = customerService.loginVerifyByUserName(userName);
+			if (custoemr != null) {
+				renderSuccessString(response, custoemr);
+			} else {
+				renderErrorString(response, "can't obtain customer infor");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			renderErrorString(response, "can't obtain customer infor");
+			e.printStackTrace();
+		}
+		
+	}
 }
 
