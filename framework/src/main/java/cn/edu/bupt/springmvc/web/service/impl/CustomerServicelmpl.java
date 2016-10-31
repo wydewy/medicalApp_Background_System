@@ -105,5 +105,17 @@ public class CustomerServicelmpl implements CustomerService {
 		return customer;
 	}
 
+		@Override
+		public Customer loginVerifyByUserName(String userName) throws Exception {
+			// TODO Auto-generated method stub
+			customerExample.createCriteria().andPhoneEqualTo(userName);
+			Customer customer = new Customer();
+			List<Customer> customerList= customerMapper.selectByExample(customerExample);
+			if(customerList!=null){
+				customer = customerList.get(0);
+			}
+			return customer;
+		}
+
 
 }

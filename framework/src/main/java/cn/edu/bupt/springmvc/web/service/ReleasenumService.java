@@ -18,4 +18,6 @@ public interface ReleasenumService {
 	int updateByPrimaryKeySelective(@Param("record") Releasenum record);
 	
 	int deleteByExample();
+	
+	Releasenum getReleasenumDetailsById(String releasenumId) throws Exception;
 }
