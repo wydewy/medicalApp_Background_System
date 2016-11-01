@@ -85,6 +85,7 @@ releasenum 放号表
 {
 id:主键
 doctorId:医生主键（外键）
+price:挂号费用
 date：放号日期
 remark:备注
 isSuccess:是否被成功预约
