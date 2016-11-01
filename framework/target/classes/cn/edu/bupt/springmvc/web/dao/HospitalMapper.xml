@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.bupt.springmvc.web.dao.HospitalMapper" >
-  <resultMap id="BaseResultMap" type="cn.edu.bupt.springmvc.web.model.Hospital" >
+  <resultMap id="HospitalBaseResultMap" type="cn.edu.bupt.springmvc.web.model.Hospital" >
     <id column="hosId" property="hosid" jdbcType="CHAR" />
     <result column="hosName" property="hosname" jdbcType="VARCHAR" />
     <result column="hosGrade" property="hosgrade" jdbcType="VARCHAR" />
@@ -99,7 +99,7 @@
 	section
 	WHERE hospital.hosId =#{value} and hospital.hosId = section.hosId;
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.HospitalExample" >
+  <select id="selectByExample" resultMap="HospitalBaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.HospitalExample" >
     select
     <if test="distinct" >
       distinct
@@ -113,7 +113,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="HospitalBaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from hospital

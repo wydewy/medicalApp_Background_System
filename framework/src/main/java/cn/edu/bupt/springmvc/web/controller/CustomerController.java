@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.bupt.springmvc.core.generic.GenericController;
 import cn.edu.bupt.springmvc.web.model.Customer;
@@ -65,10 +66,12 @@ public class CustomerController extends GenericController {
 	
 	/**
 	 * 用户登录验证
+	 * @author lhh
 	 */
-	@RequestMapping(value="loginVerifyByUserName")
+	@RequestMapping(value="loginVerifyByUserName", method=RequestMethod.POST)
 	public void loginVerify(HttpServletRequest request, HttpServletResponse response){
 		String userName = request.getParameter("account");
+		// TODO
 		Customer custoemr = new Customer();
 		try {
 			custoemr = customerService.loginVerifyByUserName(userName);
@@ -78,7 +81,6 @@ public class CustomerController extends GenericController {
 				renderErrorString(response, "can't obtain customer infor");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			renderErrorString(response, "can't obtain customer infor");
 			e.printStackTrace();
 		}

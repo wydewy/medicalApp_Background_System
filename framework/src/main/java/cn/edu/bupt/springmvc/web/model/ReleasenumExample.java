@@ -17,7 +17,7 @@ public class ReleasenumExample {
 
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
-    }
+    } 
 
     public String getOrderByClause() {
         return orderByClause;

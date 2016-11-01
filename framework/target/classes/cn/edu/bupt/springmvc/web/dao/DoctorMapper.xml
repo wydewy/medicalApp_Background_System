@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.bupt.springmvc.web.dao.DoctorMapper" >
-  <resultMap id="BaseResultMap" type="cn.edu.bupt.springmvc.web.model.Doctor" >
+  <resultMap id="DoctorBaseResultMap" type="cn.edu.bupt.springmvc.web.model.Doctor" >
     <id column="doctorId" property="doctorid" jdbcType="CHAR" />
     <result column="outpatientId" property="outpatientid" jdbcType="CHAR" />
     <result column="picHead" property="pichead" jdbcType="VARCHAR" />
@@ -21,7 +21,9 @@
     <result column="isFamilyDoc" property="isfamilydoc" jdbcType="TINYINT" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
     <result column="relNubCount" property="relnubcount" jdbcType="TINYINT" />
-	<collection property="releaseNumList" ofType="cn.edu.bupt.springmvc.web.model.ReleaseNum">
+    
+    <!-- lhh add  -->
+	<collection property="releaseNumList" ofType="cn.edu.bupt.springmvc.web.model.Releasenum">
        <id column="realseId" jdbcType="VARCHAR" property="realseid" />
        <result column="doctorId" jdbcType="VARCHAR" property="doctorid" />
        <result column="date" jdbcType="TIMESTAMP" property="date" />
@@ -107,7 +109,7 @@
 	AND
 	doctor.doctorId = releasenum.doctorId;
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.DoctorExample" >
+  <select id="selectByExample" resultMap="DoctorBaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.DoctorExample" >
     select
     <if test="distinct" >
       distinct
@@ -121,7 +123,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="DoctorBaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from doctor

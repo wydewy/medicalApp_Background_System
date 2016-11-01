@@ -35,7 +35,7 @@ public class AppointmentController extends GenericController {
 	private CustomerService  customerService;
 	@Resource
 	private OutpatientService outpatientService;
-	@Resource
+	@Resource 
 	private ReleasenumService releasenumService;
 	
 	@RequestMapping(value="insert")
@@ -129,9 +129,10 @@ public class AppointmentController extends GenericController {
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value="insert")
+	@RequestMapping(value="insertDetails")
 	public void saveAppointmentDetails(HttpServletRequest request, HttpServletResponse response){
 		Appointment record = (Appointment)request.getAttribute("appointment");
+		/*record.setId(UUID.randomUUID().toString());*/
 		int i = appointmentService.insert(record);
 		if (i>0) {
 			renderSuccessString(response, record);

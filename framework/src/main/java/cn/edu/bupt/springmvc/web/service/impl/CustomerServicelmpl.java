@@ -19,9 +19,9 @@ public class CustomerServicelmpl implements CustomerService {
 
 	@Resource
 	private CustomerMapper customerMapper;
-	
+
 	private CustomerExample customerExample;
-	
+
 	@Override
 	public int insert(Customer record) {
 		String id = UUID.randomUUID().toString();
@@ -32,11 +32,11 @@ public class CustomerServicelmpl implements CustomerService {
 		record.setNickname("");
 		record.setSex(1);
 		record.setIdcard("");
-		record.setPhone("010-23453666");
+		record.setPhone("010-23453");
 		record.setCustomeradrr("");
 		record.setPassword("");
 		record.setRemarks("");
-		record.setIsmarried((byte)1);
+		record.setIsmarried((byte) 1);
 		record.setJob("");
 		record.setNation("");
 		record.setBirthplace("");
@@ -49,7 +49,7 @@ public class CustomerServicelmpl implements CustomerService {
 	@Override
 	public List<Customer> selectByExample() {
 		customerExample = new CustomerExample();
-		customerExample.createCriteria().andCustomernameEqualTo("");
+		customerExample.createCriteria().andCustomernameEqualTo("秦君");
 		List<Customer> list = customerMapper.selectByExample(customerExample);
 		return list;
 	}
@@ -75,7 +75,7 @@ public class CustomerServicelmpl implements CustomerService {
 		record.setCustomeradrr("");
 		record.setPassword("");
 		record.setRemarks("");
-		record.setIsmarried((byte)1);
+		record.setIsmarried((byte) 1);
 		record.setJob("");
 		record.setNation("");
 		record.setBirthplace("");
@@ -92,30 +92,30 @@ public class CustomerServicelmpl implements CustomerService {
 		int i = customerMapper.deleteByExample(customerExample);
 		return i;
 	}
-	
-		@Override
+
+	@Override
 	public Customer getCustoemrDetailsByIdCard(String idCard) throws Exception {
 
 		customerExample.createCriteria().andIdcardEqualTo(idCard);
 		List<Customer> customerList = customerMapper.selectByExample(customerExample);
 		Customer customer = new Customer();
-		if(customerList!=null){
+		if (customerList != null) {
 			customer = customerList.get(0);
 		}
 		return customer;
 	}
 
-		@Override
-		public Customer loginVerifyByUserName(String userName) throws Exception {
-			// TODO Auto-generated method stub
-			customerExample.createCriteria().andPhoneEqualTo(userName);
-			Customer customer = new Customer();
-			List<Customer> customerList= customerMapper.selectByExample(customerExample);
-			if(customerList!=null){
-				customer = customerList.get(0);
-			}
+	@Override
+	public Customer loginVerifyByUserName(String userName) throws Exception {
+		customerExample.createCriteria().andPhoneEqualTo(userName);
+		Customer customer = new Customer();
+		List<Customer> customerList = customerMapper.selectByExample(customerExample);
+		if (customerList != null) {
+			customer = customerList.get(0);
 			return customer;
 		}
+		return null;
 
+	}
 
 }
