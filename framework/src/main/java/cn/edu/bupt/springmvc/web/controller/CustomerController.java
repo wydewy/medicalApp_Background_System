@@ -21,9 +21,37 @@ public class CustomerController extends GenericController {
 	@Resource
 	private CustomerService customerService;
 	
+	
 	@RequestMapping(value="insert")
 	public void insert(HttpServletRequest request, HttpServletResponse response){
 		Customer record = new Customer();
+		int i = customerService.insert(record);
+		if (i>0) {
+			renderSuccessString(response, record);
+		} else {
+			renderErrorString(response, "insert table customer failed!");
+		}
+	}
+	
+	@RequestMapping(value="register",method=RequestMethod.POST)
+	public void register(HttpServletRequest request, HttpServletResponse response){
+		String customerName = request.getParameter("account");
+		String idCard = request.getParameter("idCard");
+		String phone = request.getParameter("phone");
+		String password = request.getParameter("password");
+		Customer record = new Customer();
+		if(customerName!=null){
+			record.setCustomername(customerName);
+		}
+		if(idCard!=null){
+			record.setIdcard(idCard);
+		}
+		if(phone!=null){
+			record.setPhone(phone);
+		}
+		if(password!=null){
+			record.setPassword(password);
+		}
 		int i = customerService.insert(record);
 		if (i>0) {
 			renderSuccessString(response, record);
@@ -71,7 +99,7 @@ public class CustomerController extends GenericController {
 	@RequestMapping(value="loginVerifyByUserName", method=RequestMethod.POST)
 	public void loginVerify(HttpServletRequest request, HttpServletResponse response){
 		String userName = request.getParameter("account");
-		// TODO
+		System.out.println(userName);
 		Customer custoemr = new Customer();
 		try {
 			custoemr = customerService.loginVerifyByUserName(userName);

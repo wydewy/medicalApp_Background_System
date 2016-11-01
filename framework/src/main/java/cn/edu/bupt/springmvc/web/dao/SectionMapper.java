@@ -30,4 +30,8 @@ public interface SectionMapper {
     int updateByPrimaryKey(Section record);
 	
 	List<Doctor> selectSectionDoctorsBySectionId(String sectionId);
+	
+    /*qjk add interface*/
+	Section selectBySectionName(String SectionName);
+	
 }

@@ -26,22 +26,6 @@ public class CustomerServicelmpl implements CustomerService {
 	public int insert(Customer record) {
 		String id = UUID.randomUUID().toString();
 		record.setCustomerid(id);
-		record.setPichead("");
-		record.setCustomername("");
-		record.setAge(34);
-		record.setNickname("");
-		record.setSex(1);
-		record.setIdcard("");
-		record.setPhone("010-23453");
-		record.setCustomeradrr("");
-		record.setPassword("");
-		record.setRemarks("");
-		record.setIsmarried((byte) 1);
-		record.setJob("");
-		record.setNation("");
-		record.setBirthplace("");
-		record.setResidence("");
-		record.setWorkplace("");
 		int i = customerMapper.insert(record);
 		return i;
 	}
@@ -107,7 +91,7 @@ public class CustomerServicelmpl implements CustomerService {
 
 	@Override
 	public Customer loginVerifyByUserName(String userName) throws Exception {
-		customerExample.createCriteria().andPhoneEqualTo(userName);
+		customerExample.createCriteria().andCustomernameEqualTo(userName);
 		Customer customer = new Customer();
 		List<Customer> customerList = customerMapper.selectByExample(customerExample);
 		if (customerList != null) {
@@ -115,7 +99,6 @@ public class CustomerServicelmpl implements CustomerService {
 			return customer;
 		}
 		return null;
-
 	}
 
 }

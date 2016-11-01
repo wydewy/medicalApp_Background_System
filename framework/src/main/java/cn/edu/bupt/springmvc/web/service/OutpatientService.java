@@ -20,4 +20,12 @@ public interface OutpatientService {
 	int deleteByExample();
 	
 	public Outpatient getOutpatientDetailsById(String outpatientId) throws Exception;
+	
+	/**
+	 * @author qjk
+	 * @param sectionName
+	 * 
+	 * 点击科室名称进行该科室下门诊表的查询
+	 * */
+	List<Outpatient> selectBySectionName(String sectionName);
 }

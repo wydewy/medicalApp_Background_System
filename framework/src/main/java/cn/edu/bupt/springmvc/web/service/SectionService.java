@@ -20,4 +20,13 @@ public interface SectionService {
 	int deleteByExample();
 	
 	public List<Doctor> getSectionDoctorList(String sectionId)throws Exception;
+	
+	/**
+	 * 根据科室名称查找科室门诊信息
+	 * 
+	 * @author qjk
+	 * @param sectionName
+	 * 
+	 * */
+	Section selectBySectionName(String sectionName);
 }

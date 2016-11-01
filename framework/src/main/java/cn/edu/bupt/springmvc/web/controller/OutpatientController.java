@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.bupt.springmvc.core.generic.GenericController;
 import cn.edu.bupt.springmvc.web.model.Outpatient;
@@ -31,9 +32,18 @@ public class OutpatientController extends GenericController {
 		}
 	}
 	
-	@RequestMapping(value="selectByExample")
+	/**
+	 * 
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 请求方法是post，根据科室名称进行门诊的查询显示
+	 */
+	@RequestMapping(value="selectByExample",method=RequestMethod.POST)
 	public void select(HttpServletRequest request, HttpServletResponse response){
-		List<Outpatient> list = outpatientService.selectByExample();
+		String sectionName = request.getParameter("data");
+		List<Outpatient> list = outpatientService.selectBySectionName(sectionName);
 		if(list!=null){
 			renderSuccessString(response, list);
 		} else {

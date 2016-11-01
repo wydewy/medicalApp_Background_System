@@ -20,19 +20,19 @@ public class SectionServiceImpl implements SectionService {
 
 	@Resource
 	private SectionMapper sectionMapper;
-	
+
 	private SectionExample sectionExample;
 	
 	@Override
 	public int insert(Section record) {
 		String id = UUID.randomUUID().toString();
 		record.setSectionid(id);
-		record.setHosid("1a70694a-b425-42e3-8e09-451d66237363");
-		record.setSectioncode("科室邮编？");
-		record.setSectionname("骨科");
-		record.setSectionloc("东院骨科三层");
+		record.setHosid("921ca47b-fee2-419e-8ac9-9ae7f1435d26");
+		record.setSectioncode("0000005");
+		record.setSectionname("肾内科");
+		record.setSectionloc("第一主楼八楼肾内科");
 		record.setSectionpic(null);
-		record.setSectionintro("科室介绍:关于....");
+		record.setSectionintro("科室介绍:关于北京市海淀区社区医院肾内科的简介。");
 		int i = sectionMapper.insert(record);
 		return i;
 	}
@@ -40,9 +40,16 @@ public class SectionServiceImpl implements SectionService {
 	@Override
 	public List<Section> selectByExample() {
 		sectionExample = new SectionExample();
-		sectionExample.createCriteria().andSectionnameEqualTo("骨科");
+		sectionExample.createCriteria().andHosidEqualTo("921ca47b-fee2-419e-8ac9-9ae7f1435d26");
 		List<Section> list = sectionMapper.selectByExample(sectionExample);
 		return list;
+	}
+
+	@Override
+	public Section selectBySectionName(String sectionName) {
+		Section record = new Section();
+		record = sectionMapper.selectBySectionName(sectionName);
+		return record;
 	}
 
 	@Override

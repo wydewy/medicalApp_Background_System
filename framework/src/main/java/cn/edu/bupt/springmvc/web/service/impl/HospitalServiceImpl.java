@@ -26,14 +26,14 @@ public class HospitalServiceImpl implements HospitalService {
 	public int insert(Hospital record) {
 		String id =UUID.randomUUID().toString();
 		record.setHosid(id);
-		record.setHosname("北京协和医院");
+		record.setHosname("北京海淀区社区医院");
 		record.setHosgrade("三甲医院");
-		record.setHosaddr("东城区东单帅府园1号(东院)");
-		record.setHostel("010-43545556");
-		record.setHosintro("北京协和医院的简介");
-		record.setHosurl("www.xiehe.com");
-		record.setDean("王俊");
-		record.setDeanintro("北京协和医院院长简介");
+		record.setHosaddr("北京海淀区西土城路XX号");
+		record.setHostel("010-4354555");
+		record.setHosintro("北京海淀区社区医院简介：北京市海淀区社区医院成立于1990年。");
+		record.setHosurl("www.bjhdsqhospital.com");
+		record.setDean("康德俊凯");
+		record.setDeanintro("北京海淀区社区医院-院长简介");
 		record.setHostraffic("交通情况101,102,103,104,105");
 		record.setHosspecial("特色科室有儿科，外科，等等.");
 		record.setHosestablished(null);
