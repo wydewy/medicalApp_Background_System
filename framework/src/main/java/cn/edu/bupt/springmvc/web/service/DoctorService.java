@@ -11,6 +11,16 @@ public interface DoctorService {
 	
 	List<Doctor> selectByExample();
 	
+	/**
+	 * @author qjk
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	List<Doctor> selectBySection(String sectionName);
+	
+	Doctor searchDoctorInfo(String doctorId);
+	
 	List<Doctor> selectByPage(int page,int rows);
 	
 	int updateByPrimaryKeySelective(@Param("record") Doctor record);

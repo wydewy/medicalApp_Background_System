@@ -50,6 +50,12 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 
 	@Override
+	public Hospital searchHosInfo(String hosId) {
+		Hospital record = hospitalMapper.selectByPrimaryKey(hosId);
+		return record;
+	}
+
+	@Override
 	public List<Hospital> selectByPage(int page, int rows) {
 		hospitalExample = new HospitalExample();
 		PageHelper.startPage(page, rows);

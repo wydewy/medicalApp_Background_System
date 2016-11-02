@@ -12,6 +12,14 @@ public interface HospitalService {
 	
 	List<Hospital> selectByExample();
 	
+	/**
+	 * @author qjk
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	Hospital searchHosInfo(String hosId);
+	
 	List<Hospital> selectByPage(int page,int rows);
 	
 	int updateByPrimaryKeySelective(@Param("record") Hospital record);

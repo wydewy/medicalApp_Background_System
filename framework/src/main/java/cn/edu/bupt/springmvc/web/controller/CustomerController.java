@@ -21,7 +21,13 @@ public class CustomerController extends GenericController {
 	@Resource
 	private CustomerService customerService;
 	
-	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 插入一条数据
+	 */
 	@RequestMapping(value="insert")
 	public void insert(HttpServletRequest request, HttpServletResponse response){
 		Customer record = new Customer();
@@ -33,6 +39,14 @@ public class CustomerController extends GenericController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 注册函数，前端页面的注册
+	 */
 	@RequestMapping(value="register",method=RequestMethod.POST)
 	public void register(HttpServletRequest request, HttpServletResponse response){
 		String customerName = request.getParameter("account");
@@ -60,6 +74,13 @@ public class CustomerController extends GenericController {
 		}
 	}
 	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 查询所有的客户
+	 */
 	@RequestMapping(value="selectByExample")
 	public void select(HttpServletRequest request, HttpServletResponse response){
 		List<Customer> list = customerService.selectByExample();
@@ -71,6 +92,13 @@ public class CustomerController extends GenericController {
 		
 	}
 	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 根据主键进行记录更新
+	 */
 	@RequestMapping(value="update")
 	public void update(HttpServletRequest request, HttpServletResponse response){
 		Customer record = new Customer();
@@ -82,6 +110,13 @@ public class CustomerController extends GenericController {
 		}
 	}
 	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 删除一条记录
+	 */
 	@RequestMapping(value="delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		int i = customerService.deleteByExample();
@@ -99,7 +134,7 @@ public class CustomerController extends GenericController {
 	@RequestMapping(value="loginVerifyByUserName", method=RequestMethod.POST)
 	public void loginVerify(HttpServletRequest request, HttpServletResponse response){
 		String userName = request.getParameter("account");
-		System.out.println(userName);
+		//System.out.println(userName);
 		Customer custoemr = new Customer();
 		try {
 			custoemr = customerService.loginVerifyByUserName(userName);

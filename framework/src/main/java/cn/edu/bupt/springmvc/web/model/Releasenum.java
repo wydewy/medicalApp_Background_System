@@ -7,6 +7,8 @@ public class Releasenum {
 
     private String doctorid;
 
+    private Float price;
+
     private Date date;
 
     private String remark;
@@ -14,6 +16,10 @@ public class Releasenum {
     private Byte issuccess;
 
     private Integer isfamilynum;
+
+    private String week;
+
+    private String ampm;
 
     public String getRealseid() {
         return realseid;
@@ -29,6 +35,14 @@ public class Releasenum {
 
     public void setDoctorid(String doctorid) {
         this.doctorid = doctorid == null ? null : doctorid.trim();
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
     public Date getDate() {
@@ -61,5 +75,21 @@ public class Releasenum {
 
     public void setIsfamilynum(Integer isfamilynum) {
         this.isfamilynum = isfamilynum;
+    }
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week == null ? null : week.trim();
+    }
+
+    public String getAmpm() {
+        return ampm;
+    }
+
+    public void setAmpm(String ampm) {
+        this.ampm = ampm == null ? null : ampm.trim();
     }
 }

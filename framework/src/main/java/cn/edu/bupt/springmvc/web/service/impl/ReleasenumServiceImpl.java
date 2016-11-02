@@ -26,9 +26,10 @@ public class ReleasenumServiceImpl implements ReleasenumService {
 	public int insert(Releasenum record) {
 		String id = UUID.randomUUID().toString();
 		record.setRealseid(id);
-		record.setDoctorid("");
+		record.setDoctorid("651dcb6c-76c8-4dde-9ae8-2a0b99885535"); //医生主键
+		record.setPrice(10.0f);
 		record.setDate(null);
-		record.setRemark("备注信息");
+		record.setRemark("备注信息:杨红专家医生");
 		record.setIssuccess(null);
 		record.setIsfamilynum(null);
 		int i = releasenumMapper.insert(record);

@@ -17,7 +17,7 @@ public class ReleasenumExample {
 
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
-    } 
+    }
 
     public String getOrderByClause() {
         return orderByClause;
@@ -242,6 +242,66 @@ public class ReleasenumExample {
 
         public Criteria andDoctoridNotBetween(String value1, String value2) {
             addCriterion("doctorId not between", value1, value2, "doctorid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNull() {
+            addCriterion("price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNotNull() {
+            addCriterion("price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceEqualTo(Float value) {
+            addCriterion("price =", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotEqualTo(Float value) {
+            addCriterion("price <>", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThan(Float value) {
+            addCriterion("price >", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("price >=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThan(Float value) {
+            addCriterion("price <", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThanOrEqualTo(Float value) {
+            addCriterion("price <=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<Float> values) {
+            addCriterion("price in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotIn(List<Float> values) {
+            addCriterion("price not in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceBetween(Float value1, Float value2) {
+            addCriterion("price between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotBetween(Float value1, Float value2) {
+            addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
 
@@ -492,6 +552,146 @@ public class ReleasenumExample {
 
         public Criteria andIsfamilynumNotBetween(Integer value1, Integer value2) {
             addCriterion("isFamilyNum not between", value1, value2, "isfamilynum");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIsNull() {
+            addCriterion("week is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIsNotNull() {
+            addCriterion("week is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekEqualTo(String value) {
+            addCriterion("week =", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekNotEqualTo(String value) {
+            addCriterion("week <>", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekGreaterThan(String value) {
+            addCriterion("week >", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekGreaterThanOrEqualTo(String value) {
+            addCriterion("week >=", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekLessThan(String value) {
+            addCriterion("week <", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekLessThanOrEqualTo(String value) {
+            addCriterion("week <=", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekLike(String value) {
+            addCriterion("week like", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekNotLike(String value) {
+            addCriterion("week not like", value, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIn(List<String> values) {
+            addCriterion("week in", values, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekNotIn(List<String> values) {
+            addCriterion("week not in", values, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekBetween(String value1, String value2) {
+            addCriterion("week between", value1, value2, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekNotBetween(String value1, String value2) {
+            addCriterion("week not between", value1, value2, "week");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmIsNull() {
+            addCriterion("ampm is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmIsNotNull() {
+            addCriterion("ampm is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmEqualTo(String value) {
+            addCriterion("ampm =", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmNotEqualTo(String value) {
+            addCriterion("ampm <>", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmGreaterThan(String value) {
+            addCriterion("ampm >", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmGreaterThanOrEqualTo(String value) {
+            addCriterion("ampm >=", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmLessThan(String value) {
+            addCriterion("ampm <", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmLessThanOrEqualTo(String value) {
+            addCriterion("ampm <=", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmLike(String value) {
+            addCriterion("ampm like", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmNotLike(String value) {
+            addCriterion("ampm not like", value, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmIn(List<String> values) {
+            addCriterion("ampm in", values, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmNotIn(List<String> values) {
+            addCriterion("ampm not in", values, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmBetween(String value1, String value2) {
+            addCriterion("ampm between", value1, value2, "ampm");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmpmNotBetween(String value1, String value2) {
+            addCriterion("ampm not between", value1, value2, "ampm");
             return (Criteria) this;
         }
     }

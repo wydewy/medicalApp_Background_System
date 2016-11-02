@@ -41,6 +41,22 @@ public class HospitalController extends GenericController {
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="searchHosInfo")
+	public void searchHosInfo(HttpServletRequest request, HttpServletResponse response){
+		Hospital record = hospitalService.searchHosInfo("921ca47b-fee2-419e-8ac9-9ae7f1435d26");
+		if (record!=null) {
+			renderSuccessString(response, record);
+		} else {
+			renderErrorString(response, "select from Hospital no data!");
+		}
+	}
+	
 	@RequestMapping(value="update")
 	public void update(HttpServletRequest request, HttpServletResponse response){
 		Hospital hospital = new Hospital();

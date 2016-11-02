@@ -53,8 +53,8 @@ public class SectionController extends GenericController {
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value="selectByExample")
-	public void select(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value="selectAllSection")
+	public void selectAllSection(HttpServletRequest request, HttpServletResponse response){
 		List<Section> list = sectionService.selectByExample();
 		List<Map<String, String>> result = new ArrayList<>();
 		if(list!=null){		

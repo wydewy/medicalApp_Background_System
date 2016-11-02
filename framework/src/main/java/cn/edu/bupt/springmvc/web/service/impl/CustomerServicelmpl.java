@@ -91,6 +91,7 @@ public class CustomerServicelmpl implements CustomerService {
 
 	@Override
 	public Customer loginVerifyByUserName(String userName) throws Exception {
+		customerExample = new CustomerExample();
 		customerExample.createCriteria().andCustomernameEqualTo(userName);
 		Customer customer = new Customer();
 		List<Customer> customerList = customerMapper.selectByExample(customerExample);

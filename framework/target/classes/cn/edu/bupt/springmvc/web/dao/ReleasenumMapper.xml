@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="cn.edu.bupt.springmvc.web.model.Releasenum" >
     <id column="realseId" property="realseid" jdbcType="VARCHAR" />
     <result column="doctorId" property="doctorid" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="isSuccess" property="issuccess" jdbcType="TINYINT" />
     <result column="isFamilyNum" property="isfamilynum" jdbcType="INTEGER" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="ampm" property="ampm" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    realseId, doctorId, date, remark, isSuccess, isFamilyNum
+    realseId, doctorId, price, date, remark, isSuccess, isFamilyNum, week, ampm
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.bupt.springmvc.web.model.ReleasenumExample" >
     select
@@ -101,11 +104,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.edu.bupt.springmvc.web.model.Releasenum" >
-    insert into releasenum (realseId, doctorId, date, 
-      remark, isSuccess, isFamilyNum
+    insert into releasenum (realseId, doctorId, price, 
+      date, remark, isSuccess, 
+      isFamilyNum, week, ampm
       )
-    values (#{realseid,jdbcType=VARCHAR}, #{doctorid,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR}, #{issuccess,jdbcType=TINYINT}, #{isfamilynum,jdbcType=INTEGER}
+    values (#{realseid,jdbcType=VARCHAR}, #{doctorid,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{date,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{issuccess,jdbcType=TINYINT}, 
+      #{isfamilynum,jdbcType=INTEGER}, #{week,jdbcType=VARCHAR}, #{ampm,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.bupt.springmvc.web.model.Releasenum" >
@@ -116,6 +121,9 @@
       </if>
       <if test="doctorid != null" >
         doctorId,
+      </if>
+      <if test="price != null" >
+        price,
       </if>
       <if test="date != null" >
         date,
@@ -129,6 +137,12 @@
       <if test="isfamilynum != null" >
         isFamilyNum,
       </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="ampm != null" >
+        ampm,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="realseid != null" >
@@ -136,6 +150,9 @@
       </if>
       <if test="doctorid != null" >
         #{doctorid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
       </if>
       <if test="date != null" >
         #{date,jdbcType=TIMESTAMP},
@@ -148,6 +165,12 @@
       </if>
       <if test="isfamilynum != null" >
         #{isfamilynum,jdbcType=INTEGER},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="ampm != null" >
+        #{ampm,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +189,9 @@
       <if test="record.doctorid != null" >
         doctorId = #{record.doctorid,jdbcType=VARCHAR},
       </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
       <if test="record.date != null" >
         date = #{record.date,jdbcType=TIMESTAMP},
       </if>
@@ -178,6 +204,12 @@
       <if test="record.isfamilynum != null" >
         isFamilyNum = #{record.isfamilynum,jdbcType=INTEGER},
       </if>
+      <if test="record.week != null" >
+        week = #{record.week,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ampm != null" >
+        ampm = #{record.ampm,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -187,10 +219,13 @@
     update releasenum
     set realseId = #{record.realseid,jdbcType=VARCHAR},
       doctorId = #{record.doctorid,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=REAL},
       date = #{record.date,jdbcType=TIMESTAMP},
       remark = #{record.remark,jdbcType=VARCHAR},
       isSuccess = #{record.issuccess,jdbcType=TINYINT},
-      isFamilyNum = #{record.isfamilynum,jdbcType=INTEGER}
+      isFamilyNum = #{record.isfamilynum,jdbcType=INTEGER},
+      week = #{record.week,jdbcType=VARCHAR},
+      ampm = #{record.ampm,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -200,6 +235,9 @@
     <set >
       <if test="doctorid != null" >
         doctorId = #{doctorid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
       </if>
       <if test="date != null" >
         date = #{date,jdbcType=TIMESTAMP},
@@ -213,16 +251,25 @@
       <if test="isfamilynum != null" >
         isFamilyNum = #{isfamilynum,jdbcType=INTEGER},
       </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="ampm != null" >
+        ampm = #{ampm,jdbcType=VARCHAR},
+      </if>
     </set>
     where realseId = #{realseid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.bupt.springmvc.web.model.Releasenum" >
     update releasenum
     set doctorId = #{doctorid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
       date = #{date,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       isSuccess = #{issuccess,jdbcType=TINYINT},
-      isFamilyNum = #{isfamilynum,jdbcType=INTEGER}
+      isFamilyNum = #{isfamilynum,jdbcType=INTEGER},
+      week = #{week,jdbcType=VARCHAR},
+      ampm = #{ampm,jdbcType=VARCHAR}
     where realseId = #{realseid,jdbcType=VARCHAR}
   </update>
 </mapper>

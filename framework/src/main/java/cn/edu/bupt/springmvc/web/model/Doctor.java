@@ -202,4 +202,17 @@ public class Doctor {
     public void setRelnubcount(Byte relnubcount) {
         this.relnubcount = relnubcount;
     }
+
+	@Override
+	public String toString() {
+		return "Doctor [doctorid=" + doctorid + ", outpatientid=" + outpatientid + ", pichead=" + pichead
+				+ ", doctorname=" + doctorname + ", position=" + position + ", special=" + special + ", section="
+				+ section + ", doctorintro=" + doctorintro + ", flag=" + flag + ", sex=" + sex + ", graduinstitution="
+				+ graduinstitution + ", tutorqualification=" + tutorqualification + ", degree=" + degree + ", marjor="
+				+ marjor + ", parttimeacademic=" + parttimeacademic + ", certificatehold=" + certificatehold
+				+ ", isfamilydoc=" + isfamilydoc + ", telephone=" + telephone + ", relnubcount=" + relnubcount
+				+ ", releaseNumList=" + releaseNumList + "]";
+	}
+    
+    
 }

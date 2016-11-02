@@ -43,6 +43,43 @@ public class DoctorController extends GenericController {
 		
 	}
 	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="selectBySection", method=RequestMethod.POST)
+	public void selectBySection(HttpServletRequest request, HttpServletResponse response){
+		String sectionName = request.getParameter("data");
+		List<Doctor> list = doctorService.selectBySection(sectionName);
+		if(list!=null){
+			renderSuccessString(response, list);
+		} else {
+			renderErrorString(response, "select doctor no data");
+		}
+		
+	}
+	
+	/**
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="searchDoctorInfo", method=RequestMethod.POST)
+	public void searchDoctorInfo(HttpServletRequest request, HttpServletResponse response){
+		String doctorId = request.getParameter("data");
+		//System.out.println(doctorId);
+		Doctor record = doctorService.searchDoctorInfo(doctorId);
+		//System.out.println(record);
+		if(record!=null){
+			renderSuccessString(response, record);
+		} else {
+			renderErrorString(response, "select doctor no data");
+		}
+		
+	}
+	
+	
 	@RequestMapping(value="update")
 	public void update(HttpServletRequest request, HttpServletResponse response){
 		Doctor doctor = new Doctor();
