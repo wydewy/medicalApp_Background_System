@@ -90,6 +90,8 @@ date：放号日期
 remark:备注
 isSuccess:是否被成功预约
 isFamilyNum:放号类型（是否是家庭医生号）
+week:星期几
+ampm:上午下午
 }
 
 hospital医院表
