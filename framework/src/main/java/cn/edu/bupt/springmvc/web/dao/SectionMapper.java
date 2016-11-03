@@ -32,6 +32,7 @@ public interface SectionMapper {
 	List<Doctor> selectSectionDoctorsBySectionId(String sectionId);
 	
     /*qjk add interface*/
-	Section selectBySectionName(String SectionName);
+	Section selectBySectionName(String sectionName);
 	
+	Section searchSectionInfo(String sectionId);
 }

@@ -144,7 +144,6 @@ public class DoctorController extends GenericController {
 				doctorList = doctorService.getDoctorReleaseNumByOutPatientId(outpatient);
 				renderSuccessString(response, doctorList);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				renderErrorString(response, "can't obtain doctorReleaseNumDetail!");
 				e.printStackTrace();
 			}

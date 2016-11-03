@@ -1,5 +1,9 @@
 package cn.edu.bupt.springmvc.web.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,8 +14,11 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 
 import cn.edu.bupt.springmvc.web.dao.DoctorMapper;
+import cn.edu.bupt.springmvc.web.dao.ReleasenumMapper;
 import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.DoctorExample;
+import cn.edu.bupt.springmvc.web.model.Releasenum;
+import cn.edu.bupt.springmvc.web.model.ReleasenumExample;
 import cn.edu.bupt.springmvc.web.service.DoctorService;
 
 @Service
@@ -20,7 +27,13 @@ public class DoctorServiceImpl implements DoctorService {
 	@Resource
 	private DoctorMapper doctorMapper;
 	
+	@Resource
+	private ReleasenumMapper releasenumMapper;
+	
 	private DoctorExample doctorExample;
+	
+	private ReleasenumExample releasenumExample; 
+	
 	
 	@Override
 	public int insert(Doctor record) {
@@ -117,8 +130,32 @@ public class DoctorServiceImpl implements DoctorService {
 	
 	
 	public List<Doctor> getDoctorReleaseNumByOutPatientId(String outpatientId) throws Exception {
-		// TODO Auto-generated method stub
-		return doctorMapper.selectDoctorReleaseNumInfoByOutPatientId(outpatientId);
+		doctorExample = new DoctorExample();
+		doctorExample.createCriteria().andOutpatientidEqualTo(outpatientId);
+		List<Doctor> doctorReleasList = new ArrayList<>();
+		List<Doctor> doctorList = doctorMapper.selectByExample(doctorExample);
+		if (doctorList != null) {
+			for (Doctor doctor : doctorList) {
+				String doctorId = doctor.getDoctorid();
+				releasenumExample = new ReleasenumExample();
+				// 得到7天之内的判断条件
+				Calendar calendar = Calendar.getInstance();
+				String fromdays = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
+				Date date1 = (new SimpleDateFormat("yyyy-MM-dd")).parse(fromdays);
+				calendar.add(calendar.DATE, 7);
+				String todays = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
+				Date date2 = (new SimpleDateFormat("yyyy-MM-dd")).parse(todays);
+
+				releasenumExample.createCriteria().andDoctoridEqualTo(doctorId).andDateBetween(date1, date2);
+				List<Releasenum> releasenumList = releasenumMapper.selectByExample(releasenumExample);
+				if(releasenumList!=null){
+				Doctor doc = new Doctor();
+				doc.setReleaseNumList(releasenumList);
+				doctorReleasList.add(doc);
+				}
+			}
+		}
+		return doctorReleasList;
 	}
 
 }

@@ -61,6 +61,7 @@ public class SectionController extends GenericController {
 			for(int i=0;i<list.size();i++){
 				Map<String, String> item = new HashMap<>();
 				item.put("sectionName", list.get(i).getSectionname());
+				item.put("sectionId", list.get(i).getSectionid());
 				result.add(item);
 			}			
 		}
@@ -69,6 +70,18 @@ public class SectionController extends GenericController {
 		}else{
 			renderErrorString(response, "select section no data");
 		}	
+	}
+	
+	/**
+	 * 根据科室id获取科室详细的信息
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="searchSectionInfo")
+	public void searchSectionInfo(HttpServletRequest request, HttpServletResponse response){
+		String sectionId = request.getParameter("data");
+		
 	}
 	
 	@RequestMapping(value="update")

@@ -27,7 +27,7 @@ public class ReleasenumServiceImpl implements ReleasenumService {
 		String id = UUID.randomUUID().toString();
 		record.setRealseid(id);
 		record.setDoctorid("651dcb6c-76c8-4dde-9ae8-2a0b99885535"); //医生主键
-		record.setPrice(10.0f);
+		record.setPrice(10.0);
 		record.setDate(null);
 		record.setRemark("备注信息:杨红专家医生");
 		record.setIssuccess(null);

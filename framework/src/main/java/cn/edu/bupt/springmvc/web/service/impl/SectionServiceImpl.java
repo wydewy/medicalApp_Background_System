@@ -24,6 +24,14 @@ public class SectionServiceImpl implements SectionService {
 	private SectionExample sectionExample;
 	
 	@Override
+	public Section searchSectionInfo(String sectionId) {
+		sectionExample = new SectionExample();
+		sectionExample.createCriteria().andSectionidEqualTo(sectionId);
+		//Section record = sectionMapper.selectByExample(sectionExample);
+		return null;
+	}
+	
+	@Override
 	public int insert(Section record) {
 		String id = UUID.randomUUID().toString();
 		record.setSectionid(id);
