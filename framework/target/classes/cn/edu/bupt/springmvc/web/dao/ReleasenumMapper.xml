@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.edu.bupt.springmvc.web.model.Releasenum" >
     <id column="realseId" property="realseid" jdbcType="VARCHAR" />
     <result column="doctorId" property="doctorid" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="REAL" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="isSuccess" property="issuccess" jdbcType="TINYINT" />
@@ -108,7 +108,7 @@
       date, remark, isSuccess, 
       isFamilyNum, week, ampm
       )
-    values (#{realseid,jdbcType=VARCHAR}, #{doctorid,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+    values (#{realseid,jdbcType=VARCHAR}, #{doctorid,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
       #{date,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{issuccess,jdbcType=TINYINT}, 
       #{isfamilynum,jdbcType=INTEGER}, #{week,jdbcType=VARCHAR}, #{ampm,jdbcType=VARCHAR}
       )
@@ -152,7 +152,7 @@
         #{doctorid,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=REAL},
+        #{price,jdbcType=DOUBLE},
       </if>
       <if test="date != null" >
         #{date,jdbcType=TIMESTAMP},
@@ -190,7 +190,7 @@
         doctorId = #{record.doctorid,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
-        price = #{record.price,jdbcType=REAL},
+        price = #{record.price,jdbcType=DOUBLE},
       </if>
       <if test="record.date != null" >
         date = #{record.date,jdbcType=TIMESTAMP},
@@ -219,7 +219,7 @@
     update releasenum
     set realseId = #{record.realseid,jdbcType=VARCHAR},
       doctorId = #{record.doctorid,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=REAL},
+      price = #{record.price,jdbcType=DOUBLE},
       date = #{record.date,jdbcType=TIMESTAMP},
       remark = #{record.remark,jdbcType=VARCHAR},
       isSuccess = #{record.issuccess,jdbcType=TINYINT},
@@ -237,7 +237,7 @@
         doctorId = #{doctorid,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=REAL},
+        price = #{price,jdbcType=DOUBLE},
       </if>
       <if test="date != null" >
         date = #{date,jdbcType=TIMESTAMP},
@@ -263,7 +263,7 @@
   <update id="updateByPrimaryKey" parameterType="cn.edu.bupt.springmvc.web.model.Releasenum" >
     update releasenum
     set doctorId = #{doctorid,jdbcType=VARCHAR},
-      price = #{price,jdbcType=REAL},
+      price = #{price,jdbcType=DOUBLE},
       date = #{date,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       isSuccess = #{issuccess,jdbcType=TINYINT},

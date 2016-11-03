@@ -7,7 +7,7 @@ public class Releasenum {
 
     private String doctorid;
 
-    private Float price;
+    private Double price;
 
     private Date date;
 
@@ -37,11 +37,11 @@ public class Releasenum {
         this.doctorid = doctorid == null ? null : doctorid.trim();
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
