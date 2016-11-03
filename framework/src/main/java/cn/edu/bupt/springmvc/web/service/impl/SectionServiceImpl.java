@@ -22,7 +22,7 @@ public class SectionServiceImpl implements SectionService {
 	private SectionMapper sectionMapper;
 
 	private SectionExample sectionExample;
-	
+
 	@Override
 	public Section searchSectionInfo(String sectionId) {
 		sectionExample = new SectionExample();
@@ -30,7 +30,7 @@ public class SectionServiceImpl implements SectionService {
 		Section record = sectionMapper.selectByPrimaryKey(sectionId);
 		return record;
 	}
-	
+
 	@Override
 	public int insert(Section record) {
 		String id = UUID.randomUUID().toString();
@@ -87,13 +87,23 @@ public class SectionServiceImpl implements SectionService {
 		int i = sectionMapper.deleteByExample(sectionExample);
 		return i;
 	}
-	
-		@Override
+
+	@Override
 	public List<Doctor> getSectionDoctorList(String sectionId) throws Exception {
 		// TODO Auto-generated method stub
-		 return sectionMapper.selectSectionDoctorsBySectionId(sectionId);
-	
+		return sectionMapper.selectSectionDoctorsBySectionId(sectionId);
+
 	}
 
+	@Override
+	public Section getSectionById(String sectionId) {
+		sectionExample = new SectionExample();
+		sectionExample.createCriteria().andSectionidEqualTo(sectionId);
+		List<Section> sectionList = sectionMapper.selectByExample(sectionExample);
+		if (sectionList != null) {
+			return sectionList.get(0);
+		}
+		return null;
+	}
 
 }
