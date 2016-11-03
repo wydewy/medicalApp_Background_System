@@ -69,6 +69,14 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
+	public List<Doctor> selectByOutpatientId(String outpatientId) {
+		doctorExample = new DoctorExample();
+		doctorExample.createCriteria().andOutpatientidEqualTo(outpatientId);
+		List<Doctor> list = doctorMapper.selectByExample(doctorExample);
+		return list;
+	}
+
+	@Override
 	public List<Doctor> selectBySection(String sectionName) {
 		doctorExample = new DoctorExample();
 		doctorExample.createCriteria().andSectionEqualTo(sectionName);
@@ -147,11 +155,12 @@ public class DoctorServiceImpl implements DoctorService {
 				Date date2 = (new SimpleDateFormat("yyyy-MM-dd")).parse(todays);
 
 				releasenumExample.createCriteria().andDoctoridEqualTo(doctorId).andDateBetween(date1, date2);
+				releasenumExample.setOrderByClause("date");
 				List<Releasenum> releasenumList = releasenumMapper.selectByExample(releasenumExample);
 				if(releasenumList!=null){
-				Doctor doc = new Doctor();
-				doc.setReleaseNumList(releasenumList);
-				doctorReleasList.add(doc);
+				//Doctor doc = new Doctor();
+				doctor.setReleaseNumList(releasenumList);
+				doctorReleasList.add(doctor);
 				}
 			}
 		}

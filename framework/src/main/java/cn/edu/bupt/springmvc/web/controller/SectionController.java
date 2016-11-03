@@ -67,7 +67,7 @@ public class SectionController extends GenericController {
 		}
 		if(result!=null){
 			renderSuccessString(response, result);
-		}else{
+		} else {
 			renderErrorString(response, "select section no data");
 		}	
 	}
@@ -78,10 +78,15 @@ public class SectionController extends GenericController {
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value="searchSectionInfo")
+	@RequestMapping(value="searchSectionInfo",method=RequestMethod.POST)
 	public void searchSectionInfo(HttpServletRequest request, HttpServletResponse response){
 		String sectionId = request.getParameter("data");
-		
+		Section record = sectionService.searchSectionInfo(sectionId);
+		if (record!=null) {
+			renderSuccessString(response, record);
+		} else {
+			renderErrorString(response, "select section info error!");
+		}
 	}
 	
 	@RequestMapping(value="update")

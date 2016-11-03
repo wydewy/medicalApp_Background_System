@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import cn.edu.bupt.springmvc.web.model.Outpatient;
-import cn.edu.bupt.springmvc.web.model.OutpatientExample;
 
 public interface OutpatientService {
 
@@ -28,4 +27,6 @@ public interface OutpatientService {
 	 * 点击科室名称进行该科室下门诊表的查询
 	 * */
 	List<Outpatient> selectBySectionName(String sectionName);
+	
+	Outpatient selectByName(String outpatientName);
 }

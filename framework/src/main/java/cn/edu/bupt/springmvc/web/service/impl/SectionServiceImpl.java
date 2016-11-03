@@ -27,8 +27,8 @@ public class SectionServiceImpl implements SectionService {
 	public Section searchSectionInfo(String sectionId) {
 		sectionExample = new SectionExample();
 		sectionExample.createCriteria().andSectionidEqualTo(sectionId);
-		//Section record = sectionMapper.selectByExample(sectionExample);
-		return null;
+		Section record = sectionMapper.selectByPrimaryKey(sectionId);
+		return record;
 	}
 	
 	@Override

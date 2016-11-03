@@ -26,6 +26,16 @@ public class OutpatientServletImpl implements OutpatientService {
 	
 	private OutpatientExample outpatientExample;
 	
+	
+	@Override
+	public Outpatient selectByName(String outpatientName) {
+		outpatientExample = new OutpatientExample();
+		outpatientExample.createCriteria().andOutpatientnameEqualTo(outpatientName);
+		List<Outpatient> list = outpatientMapper.selectByExample(outpatientExample);
+		Outpatient record = list.get(0);
+		return record;
+	}
+	
 	@Override
 	public int insert(Outpatient record) {
 		String id = UUID.randomUUID().toString();

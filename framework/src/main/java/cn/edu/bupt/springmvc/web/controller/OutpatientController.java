@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.bupt.springmvc.core.generic.GenericController;
+import cn.edu.bupt.springmvc.web.model.Doctor;
 import cn.edu.bupt.springmvc.web.model.Outpatient;
+import cn.edu.bupt.springmvc.web.service.DoctorService;
 import cn.edu.bupt.springmvc.web.service.OutpatientService;
 
 @Controller
@@ -20,6 +22,8 @@ public class OutpatientController extends GenericController {
 
 	@Resource
 	private OutpatientService outpatientService;
+	@Resource
+	private DoctorService doctorService;
 	
 	@RequestMapping(value="insert")
 	public void insert(HttpServletRequest request, HttpServletResponse response){
@@ -51,6 +55,30 @@ public class OutpatientController extends GenericController {
 		}
 		
 	}
+	
+	
+	/**
+	 * 
+	 * @author qjk
+	 * @param request
+	 * @param response
+	 * 
+	 * 请求方法是post，根据门诊名称进行医生的查询显示
+	 */
+	@RequestMapping(value="selectDoctor",method=RequestMethod.POST)
+	public void selectDoctor(HttpServletRequest request, HttpServletResponse response){
+		String outpatientName = request.getParameter("data");
+		Outpatient record = outpatientService.selectByName(outpatientName);
+		String outpatientId = record.getOutpatientid();
+		List<Doctor> list = doctorService.selectByOutpatientId(outpatientId);
+		if(list!=null){
+			renderSuccessString(response, list);
+		} else {
+			renderErrorString(response, "select outpatient no data");
+		}
+		
+	}
+	
 	
 	@RequestMapping(value="update")
 	public void update(HttpServletRequest request, HttpServletResponse response){

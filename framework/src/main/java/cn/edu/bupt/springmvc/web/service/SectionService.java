@@ -29,4 +29,6 @@ public interface SectionService {
 	 * 
 	 * */
 	Section selectBySectionName(String sectionName);
+	
+	Section searchSectionInfo(String sectionId);
 }

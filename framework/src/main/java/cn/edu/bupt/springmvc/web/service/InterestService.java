@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import cn.edu.bupt.springmvc.web.model.Interest;
-import cn.edu.bupt.springmvc.web.model.InterestExample;
 
 public interface InterestService {
 

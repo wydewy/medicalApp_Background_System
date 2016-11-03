@@ -1,7 +1,11 @@
 package cn.edu.bupt.springmvc.web.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.edu.bupt.springmvc.core.generic.GenericController;
 import cn.edu.bupt.springmvc.web.model.Doctor;
+import cn.edu.bupt.springmvc.web.model.Releasenum;
 import cn.edu.bupt.springmvc.web.service.DoctorService;
 
 @Controller
@@ -60,6 +65,7 @@ public class DoctorController extends GenericController {
 		
 	}
 	
+
 	/**
 	 * @author qjk
 	 * @param request
@@ -133,15 +139,40 @@ public class DoctorController extends GenericController {
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value = "getDoctorReleaseNumDetailByOutpatientId", method = RequestMethod.GET)
+	@RequestMapping(value = "getDoctorReleaseNumDetailByOutpatientId", method = RequestMethod.POST)
 	public void getDoctorReleaseNumDetailByOutpatientId(HttpServletRequest request, HttpServletResponse response) {
 		
-		String outpatient = request.getParameter("outpatientId");
+		String outpatient = request.getParameter("data");
+		System.out.println(outpatient);
 		List<Doctor> doctorList = new ArrayList<>();
 		
+		Map<String, String> item1 = new HashMap<>();
+		Map<String, String> item2 = new HashMap<>();
+		Map<String, String> item3 = new HashMap<>();
+		Map<String, String> item4 = new HashMap<>();
+		Map<String, String> item5 = new HashMap<>();
+		Map<String, String> item6 = new HashMap<>();
+		Map<String, String> item7 = new HashMap<>();
+		/*Date now = new Date();
+		SimpleDateFormat time=new SimpleDateFormat("yyyy:MM:dd"); 
+		String today = time.format(now);*/
 		if (outpatient != null && !"".equals(outpatient)) {
 			try {
 				doctorList = doctorService.getDoctorReleaseNumByOutPatientId(outpatient);
+				for(Doctor doctor:doctorList){
+					List<Releasenum> list = doctor.getReleaseNumList();
+					for(int i=0;i<list.size();i++){
+						/*SimpleDateFormat item=new SimpleDateFormat("yyyy:MM:dd"); 			 
+						Date date = list.get(i).getDate();
+						String dateitem = item.format(date);
+						if(dateitem==today){
+							
+						}*/
+						
+						//item.put("date", date);
+						
+					}
+				}
 				renderSuccessString(response, doctorList);
 			} catch (Exception e) {
 				renderErrorString(response, "can't obtain doctorReleaseNumDetail!");

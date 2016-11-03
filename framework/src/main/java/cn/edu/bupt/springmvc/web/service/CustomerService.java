@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import cn.edu.bupt.springmvc.web.model.Customer;
-import cn.edu.bupt.springmvc.web.model.CustomerExample;
 
 public interface CustomerService {
 	

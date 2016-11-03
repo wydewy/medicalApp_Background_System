@@ -33,6 +33,4 @@ public interface SectionMapper {
 	
     /*qjk add interface*/
 	Section selectBySectionName(String sectionName);
-	
-	Section searchSectionInfo(String sectionId);
 }

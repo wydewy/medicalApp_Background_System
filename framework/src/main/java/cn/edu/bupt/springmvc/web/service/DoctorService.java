@@ -19,6 +19,8 @@ public interface DoctorService {
 	 */
 	List<Doctor> selectBySection(String sectionName);
 	
+	List<Doctor> selectByOutpatientId(String outpatientId);
+ 	
 	Doctor searchDoctorInfo(String doctorId);
 	
 	List<Doctor> selectByPage(int page,int rows);
